@@ -31,13 +31,18 @@ namespace TuShareLoader
             // postData:json格式的请求报文,例如：{"key1":"value1","key2":"value2"}
             // 发送的链接包含在代码里，因为不变
             // stockCode = "000001.SZ"
+            string year = DateTime.Now.ToString("yyyy");
+            string month = DateTime.Now.ToString("MM");
+            string day = DateTime.Now.ToString("dd");
+
+            string dateToday = year + month + day;
 
             //在这里把日期默认到当天end_day
             DataParams DP = new DataParams()
             {
                 ts_code = stockCode,
                 start_date = "20190601",
-                end_date = "20200316"
+                end_date = dateToday
             };
 
             RequestData dataReq = new RequestData()

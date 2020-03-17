@@ -52,6 +52,10 @@
     <Reference Include="Telerik.WinControls, Version=2017.2.502.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.ChartView, Version=2017.2.502.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="Telerik.WinControls.UI, Version=2017.2.502.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
     <Reference Include="ZedGraph, Version=5.1.7.430, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
       <HintPath>..\packages\ZedGraph.5.1.7\lib\net35-Client\ZedGraph.dll</HintPath>
     </Reference>
@@ -63,13 +67,41 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketDataUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MarketDataUserControl.Designer.cs">
+      <DependentUpon>MarketDataUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarketDataUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarketDataUserForm.Designer.cs">
+      <DependentUpon>MarketDataUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TuShare\BanKuaiDta.cs" />
     <Compile Include="TuShare\JsonDataContractJsonSerializer.cs" />
     <Compile Include="TuShare\HttpHelper.cs" />
     <Compile Include="TuShare\RequestData.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketDataUserControl.resx">
+      <DependentUpon>MarketDataUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarketDataUserForm.resx">
+      <DependentUpon>MarketDataUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -80,6 +112,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -96,6 +129,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="image\icons8-layout-48.png" />
+    <None Include="image\icons8-select-column-48.png" />
+    <None Include="image\icons8-vertical-timeline-48.png" />
     <Content Include="License-LGPL.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

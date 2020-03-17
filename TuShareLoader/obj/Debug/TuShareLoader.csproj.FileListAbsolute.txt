@@ -27,3 +27,6 @@ C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\sv\Ze
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\tr\ZedGraph.resources.dll
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\zh-cn\ZedGraph.resources.dll
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.FormMain.resources
+C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.MarketDataUserControl.resources
+C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.MarketDataUserForm.resources

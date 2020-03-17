@@ -35,6 +35,8 @@
             // zedGraphControl1
             // 
             this.zedGraphControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.zedGraphControl1.IsEnableSelection = true;
+            this.zedGraphControl1.IsShowPointValues = true;
             this.zedGraphControl1.Location = new System.Drawing.Point(0, 0);
             this.zedGraphControl1.Name = "zedGraphControl1";
             this.zedGraphControl1.ScrollGrace = 0D;
@@ -47,6 +49,7 @@
             this.zedGraphControl1.Size = new System.Drawing.Size(1059, 529);
             this.zedGraphControl1.TabIndex = 0;
             this.zedGraphControl1.UseExtendedPrintDialog = true;
+            this.zedGraphControl1.PointValueEvent += new ZedGraph.ZedGraphControl.PointValueHandler(this.zGCDateChart_PointValueEvent);
             // 
             // Form1
             // 
@@ -56,7 +59,6 @@
             this.Controls.Add(this.zedGraphControl1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form_Load);
             this.ResumeLayout(false);
 
         }
