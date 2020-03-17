@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SinaFinalDataLoader", "SinaFinalDataLoader\SinaFinalDataLoader.csproj", "{27D53E06-9A27-421B-AE3C-9DB086F1D588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuShareLoader", "TuShareLoader\TuShareLoader.csproj", "{BDE1201C-AD58-4C6B-BF82-2AAF3FDB770C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27D53E06-9A27-421B-AE3C-9DB086F1D588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D53E06-9A27-421B-AE3C-9DB086F1D588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D53E06-9A27-421B-AE3C-9DB086F1D588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D53E06-9A27-421B-AE3C-9DB086F1D588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE1201C-AD58-4C6B-BF82-2AAF3FDB770C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE1201C-AD58-4C6B-BF82-2AAF3FDB770C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE1201C-AD58-4C6B-BF82-2AAF3FDB770C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE1201C-AD58-4C6B-BF82-2AAF3FDB770C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {459D964E-3E7D-4F1C-A59A-C231FEE1CC01}
+	EndGlobalSection
+EndGlobal
