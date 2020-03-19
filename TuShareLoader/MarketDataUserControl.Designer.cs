@@ -31,14 +31,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dataGridView_spot = new System.Windows.Forms.DataGridView();
+            this.dataGridView_future = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_spot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_future)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -46,40 +47,40 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.dataGridView_spot);
+            this.tabPage3.Controls.Add(this.dataGridView_future);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(284, 270);
+            this.tabPage3.Size = new System.Drawing.Size(284, 616);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "商品板块";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // dataGridView_spot
+            // dataGridView_future
             // 
-            this.dataGridView_spot.AllowUserToAddRows = false;
-            this.dataGridView_spot.AllowUserToDeleteRows = false;
-            this.dataGridView_spot.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView_spot.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView_spot.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView_spot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_spot.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView_future.AllowUserToAddRows = false;
+            this.dataGridView_future.AllowUserToDeleteRows = false;
+            this.dataGridView_future.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView_future.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView_future.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView_future.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_future.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            this.dataGridView_spot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_spot.GridColor = System.Drawing.Color.White;
-            this.dataGridView_spot.Location = new System.Drawing.Point(2, 2);
-            this.dataGridView_spot.MultiSelect = false;
-            this.dataGridView_spot.Name = "dataGridView_spot";
-            this.dataGridView_spot.ReadOnly = true;
-            this.dataGridView_spot.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView_spot.RowHeadersVisible = false;
+            this.dataGridView_future.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_future.GridColor = System.Drawing.Color.White;
+            this.dataGridView_future.Location = new System.Drawing.Point(2, 2);
+            this.dataGridView_future.MultiSelect = false;
+            this.dataGridView_future.Name = "dataGridView_future";
+            this.dataGridView_future.ReadOnly = true;
+            this.dataGridView_future.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView_future.RowHeadersVisible = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView_spot.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView_spot.RowTemplate.Height = 23;
-            this.dataGridView_spot.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_spot.Size = new System.Drawing.Size(280, 266);
-            this.dataGridView_spot.TabIndex = 1;
+            this.dataGridView_future.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView_future.RowTemplate.Height = 23;
+            this.dataGridView_future.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_future.Size = new System.Drawing.Size(280, 612);
+            this.dataGridView_future.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -99,7 +100,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(284, 616);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "股票板块";
+            this.tabPage1.Text = "A股板块";
             // 
             // dataGridView1
             // 
@@ -138,6 +139,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -145,6 +147,16 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(292, 642);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(284, 616);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "国际指数";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // MarketDataUserControl
             // 
@@ -156,7 +168,7 @@
             this.Name = "MarketDataUserControl";
             this.Size = new System.Drawing.Size(292, 642);
             this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_spot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_future)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -167,11 +179,12 @@
         #endregion
 
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.DataGridView dataGridView_spot;
+        private System.Windows.Forms.DataGridView dataGridView_future;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }

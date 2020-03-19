@@ -78,7 +78,7 @@ namespace TuShareLoader
             {
                 List<List<string>> paramsMaList = new List<List<string>>();
 
-                for (int i = 0; i < items.Count - 60; i++)
+                for (int i = 0; i < items.Count - 80; i++)
                 {
                     List<string> maParams = new List<string>();
                     maParams.Add(stockName);
@@ -86,13 +86,13 @@ namespace TuShareLoader
                     maParams.Add(items[i][5]);
                     double sum = 0.00;
                     double avg = 0.00;
-                    for (int j = i; j < i + 30; j++)
+                    for (int j = i; j < i + 60; j++)
                     {
                         double maTemp = 0.00;
                         double.TryParse(items[j][5], out maTemp);
                         sum = sum + maTemp;
                     }
-                    avg = sum / 30;
+                    avg = sum / 60;
                     maParams.Add(avg.ToString());
 
                     double price = 0.00;

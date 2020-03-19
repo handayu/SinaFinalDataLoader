@@ -1,0 +1,16 @@
+XIN9/富时中国A50指数
+HSI/恒生指数
+DJI/道琼斯工业指数
+SPX/标普500指数
+IXIC/纳斯达克指数
+FTSE/富时100指数
+FCHI/法国CAC40指数
+GDAXI/德国DAX指数
+N225/日经225指数
+KS11/韩国综合指数
+AS51/澳大利亚标普200指数
+SENSEX/印度孟买SENSEX指数
+IBOVESPA/巴西IBOVESPA指数
+RTS/俄罗斯RTS指数
+TWII/台湾加权指数
+SPTSX/加拿大S&P-TSX指数

@@ -47,9 +47,12 @@ namespace TuShareLoader
             mPane.YAxis.MajorGrid.IsVisible = true;//设置虚线.
             zedGraphControl1.IsShowHScrollBar = true;//不显示水平滚动条
             zedGraphControl1.PanModifierKeys = Keys.None;//鼠标拖拽可移动
+            mPane.Legend.IsVisible = false;//不显示Lenged，因为当股票很多的时候，下面的图表会被压缩到一点点没有。
 
             //加载窗口
             this.Text = bankuaiDta.BanKuaiName;
+
+            //图表标题
             mPane.Title.Text = bankuaiDta.BanKuaiName;//标题
 
             //加载数据
@@ -59,7 +62,7 @@ namespace TuShareLoader
         public Color GetRandomColor()
         {
             Random RandomNum_First = new Random((int)DateTime.Now.Ticks);
-            //  对于C#的随机数，没什么好说的
+            //  对于C#的随机数
             System.Threading.Thread.Sleep(RandomNum_First.Next(50));
             Random RandomNum_Sencond = new Random((int)DateTime.Now.Ticks);
 
@@ -85,6 +88,9 @@ namespace TuShareLoader
                 //内部把token和Url，日期，数据周期，等参数封包了，只暴露了股票代码参数，默认从20190601开始的数据
                 StockData sData1 = HttpHelper.PostUrl(stockList[j]);
                 List<List<string>> maList = sData1.HoladMaList();
+
+                if (maList.Count <= 0) continue;
+
                 maList.Reverse();
 
                 PointPairList dataList = new PointPairList();
@@ -119,14 +125,35 @@ namespace TuShareLoader
             string minkey = stockDatDic.Keys.Select(x => new { x, y = stockDatDic[x] }).OrderBy(x => x.y).First().x;
             string maxkey = stockDatDic.Keys.Select(x => new { x, y = stockDatDic[x] }).OrderByDescending(x => x.y).First().x;
 
-            string title = string.Format("Max:{0},Min:{1}", maxkey,minkey);
+            string title = string.Format("板块当前最强/最弱-Max:{0},Min:{1}", maxkey,minkey);
             this.Text = title;
+
+            //板块显示强弱
+            decimal qiangDuPercent = 0m;
+            int iUpNum = 0;
+            foreach(KeyValuePair<string,double> kvPair in stockDatDic)
+            {
+                if(kvPair.Value >= 0)
+                {
+                    iUpNum = iUpNum + 1;
+                }
+            }
+
+            qiangDuPercent = iUpNum*100 / stockDatDic.Count;
+            mPane.Title.Text = mPane.Title.Text + string.Format("[板块强度占比:{0}%]",qiangDuPercent.ToString());//标题
+
         }
 
         private string zGCDateChart_PointValueEvent(ZedGraphControl sender, GraphPane pane, CurveItem curve, int iPt)
         {
+            curve.IsSelected = true;
+
+
             PointPair pt = curve[iPt];
             return curve.Label.Text +":" + pt.X.ToString() +"/"+ pt.Y.ToString();
+
         }
     }
 }
+
+

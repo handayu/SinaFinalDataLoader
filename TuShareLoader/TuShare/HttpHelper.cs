@@ -41,7 +41,7 @@ namespace TuShareLoader
             DataParams DP = new DataParams()
             {
                 ts_code = stockCode,
-                start_date = "20190601",
+                start_date = "20190101",
                 end_date = dateToday
             };
 

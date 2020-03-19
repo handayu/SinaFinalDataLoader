@@ -31,7 +31,7 @@ namespace TuShareLoader
         public void SubScribe()
         {
             //1.获取所有的板块和股票数据
-            string filePath = @"C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\板块";
+            string filePath = @"C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\A股板块";
             string[] files = Directory.GetFiles(filePath, "*.txt");
 
             foreach (string file in files)
@@ -44,9 +44,10 @@ namespace TuShareLoader
                 //设置文件共享方式为读写，FileShare.ReadWrite，这样的话，就可以打开了
                 FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 StreamReader sr = new StreamReader(fs, System.Text.Encoding.Default);
-                String line;
+                string line = "";
                 while ((line = sr.ReadLine()) != null)
                 {
+                    if (line != "")
                     stockList.Add(line.ToString());
                 }
 

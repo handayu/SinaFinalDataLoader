@@ -43,10 +43,6 @@
             WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient3 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient6 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton_VLayout = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_SLayOut = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_HLayout = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_LogOut = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,57 +50,14 @@
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teamViwerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.布局ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.横向ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.竖向ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.平铺ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.BackColor = System.Drawing.Color.White;
-            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton_VLayout,
-            this.toolStripButton_SLayOut,
-            this.toolStripButton_HLayout});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 25);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1125, 31);
-            this.toolStrip2.TabIndex = 1;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripButton_VLayout
-            // 
-            this.toolStripButton_VLayout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_VLayout.Image = global::TuShareLoader.Properties.Resources.icons8_layout_48;
-            this.toolStripButton_VLayout.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_VLayout.Name = "toolStripButton_VLayout";
-            this.toolStripButton_VLayout.Size = new System.Drawing.Size(28, 28);
-            this.toolStripButton_VLayout.Text = "toolStripButton8";
-            this.toolStripButton_VLayout.Click += new System.EventHandler(this.toolStripButton_VLayout_Click);
-            // 
-            // toolStripButton_SLayOut
-            // 
-            this.toolStripButton_SLayOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_SLayOut.Image = global::TuShareLoader.Properties.Resources.icons8_select_column_48;
-            this.toolStripButton_SLayOut.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_SLayOut.Name = "toolStripButton_SLayOut";
-            this.toolStripButton_SLayOut.Size = new System.Drawing.Size(28, 28);
-            this.toolStripButton_SLayOut.Text = "toolStripButton9";
-            this.toolStripButton_SLayOut.Click += new System.EventHandler(this.toolStripButton_SLayOut_Click);
-            // 
-            // toolStripButton_HLayout
-            // 
-            this.toolStripButton_HLayout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_HLayout.Image = global::TuShareLoader.Properties.Resources.icons8_vertical_timeline_48;
-            this.toolStripButton_HLayout.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_HLayout.Name = "toolStripButton_HLayout";
-            this.toolStripButton_HLayout.Size = new System.Drawing.Size(28, 28);
-            this.toolStripButton_HLayout.Text = "toolStripButton10";
-            this.toolStripButton_HLayout.Click += new System.EventHandler(this.toolStripButton_HLayout_Click);
             // 
             // menuStrip1
             // 
@@ -112,7 +65,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
-            this.帮助HToolStripMenuItem});
+            this.帮助HToolStripMenuItem,
+            this.布局ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1125, 25);
@@ -157,6 +111,40 @@
             // 
             this.teamViwerToolStripMenuItem.Name = "teamViwerToolStripMenuItem";
             this.teamViwerToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            // 
+            // 布局ToolStripMenuItem
+            // 
+            this.布局ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.横向ToolStripMenuItem,
+            this.竖向ToolStripMenuItem,
+            this.平铺ToolStripMenuItem});
+            this.布局ToolStripMenuItem.Name = "布局ToolStripMenuItem";
+            this.布局ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.布局ToolStripMenuItem.Text = "布局";
+            // 
+            // 横向ToolStripMenuItem
+            // 
+            this.横向ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_layout_48;
+            this.横向ToolStripMenuItem.Name = "横向ToolStripMenuItem";
+            this.横向ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.横向ToolStripMenuItem.Text = "横向";
+            this.横向ToolStripMenuItem.Click += new System.EventHandler(this.HToolStripMenuItem_Click);
+            // 
+            // 竖向ToolStripMenuItem
+            // 
+            this.竖向ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_select_column_48;
+            this.竖向ToolStripMenuItem.Name = "竖向ToolStripMenuItem";
+            this.竖向ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.竖向ToolStripMenuItem.Text = "竖向";
+            this.竖向ToolStripMenuItem.Click += new System.EventHandler(this.VToolStripMenuItem_Click);
+            // 
+            // 平铺ToolStripMenuItem
+            // 
+            this.平铺ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_vertical_timeline_48;
+            this.平铺ToolStripMenuItem.Name = "平铺ToolStripMenuItem";
+            this.平铺ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.平铺ToolStripMenuItem.Text = "平铺";
+            this.平铺ToolStripMenuItem.Click += new System.EventHandler(this.WToolStripMenuItem_Click);
             // 
             // dockPanel1
             // 
@@ -213,24 +201,12 @@
             this.dockPanel1.Skin = dockPanelSkin1;
             this.dockPanel1.TabIndex = 5;
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.statusStrip1.Location = new System.Drawing.Point(0, 571);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(1125, 22);
-            this.statusStrip1.TabIndex = 8;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1125, 593);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dockPanel1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -241,8 +217,6 @@
             this.Text = "投研板块终端";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.Load += new System.EventHandler(this.Form_load);
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -251,7 +225,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 文件ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮助HToolStripMenuItem;
@@ -263,11 +236,11 @@
         private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Login;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
-        private System.Windows.Forms.ToolStripButton toolStripButton_VLayout;
-        private System.Windows.Forms.ToolStripButton toolStripButton_SLayOut;
-        private System.Windows.Forms.ToolStripButton toolStripButton_HLayout;
         private System.Windows.Forms.ToolStripMenuItem teamViwerToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 布局ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 横向ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 竖向ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 平铺ToolStripMenuItem;
     }
 }
 
