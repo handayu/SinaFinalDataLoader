@@ -123,6 +123,38 @@ namespace TuShareLoader
         {
             this.LayoutMdi(MdiLayout.TileVertical);
         }
+
+        /// <summary>
+        /// 默认为显示强-弱标的
+        /// </summary>
+        private int m_isAllVisableDownStock = 1;
+
+        /// <summary>
+        /// 全部显示或隐藏弱势品种
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_AllVisualClick(object sender, EventArgs e)
+        {
+            switch (m_isAllVisableDownStock)
+            {
+                case 1:
+                    foreach(Form1 f in m_BanKuaiFormList)
+                    {
+                        f.MenuItem_Click(null, null);
+                    }
+
+                    this.ToolStripMenuItem_AllVisual.Checked = false;
+                    m_isAllVisableDownStock = 0;
+                    break;
+
+                case 0:
+
+                    this.ToolStripMenuItem_AllVisual.Checked = true;
+                    m_isAllVisableDownStock = 1;
+                    break;
+            }
+        }
     }
 }
 

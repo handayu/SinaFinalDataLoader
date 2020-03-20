@@ -153,7 +153,89 @@ namespace TuShareLoader
             return curve.Label.Text +":" + pt.X.ToString() +"/"+ pt.Y.ToString();
 
         }
+
+        /// <summary>
+        /// 在系统右键下拉菜单中加入隐藏和现实强势弱势标的
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="menuStrip"></param>
+        /// <param name="mousePt"></param>
+        /// <param name="objState"></param>
+        private void ContextMenuClick_Event(ZedGraphControl sender, ContextMenuStrip menuStrip, Point mousePt, ZedGraphControl.ContextMenuObjectState objState)
+        {
+            ToolStripSeparator tPera = new ToolStripSeparator();
+            menuStrip.Items.Add(tPera);
+
+            ToolStripMenuItem menuItem = new ToolStripMenuItem();
+            menuItem.Text = "显示/隐藏弱势标的";
+            menuItem.Checked = true;
+
+            menuItem.Click += MenuItem_Click;
+            menuStrip.Items.Add(menuItem);
+
+        }
+
+        /// <summary>
+        /// 默认为显示强-弱标的
+        /// </summary>
+        private int m_isVisableDownStock = 1;
+
+        /// <summary>
+        /// 单击改变强势和弱势
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void MenuItem_Click(object sender, EventArgs e)
+        {
+            switch(m_isVisableDownStock)
+            {
+                case 1:
+
+                    if ((sender as ToolStripMenuItem).Text == "显示/隐藏弱势标的")
+                    {
+                        (sender as ToolStripMenuItem).Checked = false;
+                    }
+
+                    this.progressBar1.Value = 50;
+
+                    GraphPane mPane1 = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+                    CurveList curList = mPane1.CurveList;
+                    foreach (CurveItem curItem in curList)
+                    {
+                        if (curItem.Points[curItem.Points.Count - 1].Y < 0)
+                        {
+                            curItem.IsVisible = false;
+                        }
+                    }
+                    zedGraphControl1.RestoreScale(mPane1);
+                    this.progressBar1.Value = 100;
+                    m_isVisableDownStock = 0;
+                    break;
+
+                case 0:
+
+                    if ((sender as ToolStripMenuItem).Text == "显示/隐藏弱势标的")
+                    {
+                        (sender as ToolStripMenuItem).Checked = true;
+                    }
+
+                    this.progressBar1.Value = 50;
+
+                    GraphPane mPane2 = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+                    CurveList curList2 = mPane2.CurveList;
+                    foreach (CurveItem curItem in curList2)
+                    {
+                        curItem.IsVisible = true;
+                    }
+                    zedGraphControl1.RestoreScale(mPane2);
+                    this.progressBar1.Value = 100;
+                    m_isVisableDownStock = 1;
+                    break;            
+            }
+        }
     }
 }
 
 
+
+

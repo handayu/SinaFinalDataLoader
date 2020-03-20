@@ -31,7 +31,7 @@ namespace TuShareLoader
         public void SubScribe()
         {
             //1.获取所有的板块和股票数据
-            string filePath = @"C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\A股板块";
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "A股板块";
             string[] files = Directory.GetFiles(filePath, "*.txt");
 
             foreach (string file in files)
