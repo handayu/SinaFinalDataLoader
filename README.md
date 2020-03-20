@@ -1,7 +1,7 @@
 # SinaFinalDataLoader
  利用tuShare开源数据平台打造股票强弱板块轮动研究平台
 
-![image](https://github.com/handayu/OandaTrading/blob/master/image/trading.gif)
+![image](https://github.com/handayu/SinaFinalDataLoader/blob/master/TuShareLoader/image/1.png)
 
 
 ### 技术应用？
