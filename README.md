@@ -5,11 +5,11 @@
 
 
 ### 技术应用？
-- ThirdPartySoftWare Multicharts
-- Trade Strategy交易策略
-- Use Multicharts PowerLanguage Edit
-- 事件引擎
-- Windows Hook
+- 网页爬虫
+- 开源金融数据接口tuShare支持
+- Http restFul技术
+- 图表展示
+- Lua指标计算
 - .Net Framework4.6.1
 
 
