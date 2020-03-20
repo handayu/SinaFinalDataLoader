@@ -146,6 +146,8 @@ namespace TuShareLoader
 
         private string zGCDateChart_PointValueEvent(ZedGraphControl sender, GraphPane pane, CurveItem curve, int iPt)
         {
+            curve.IsSelectable = true;
+
             curve.IsSelected = true;
 
 
@@ -238,4 +240,5 @@ namespace TuShareLoader
 
 
 
+
 
