@@ -40,7 +40,20 @@ namespace TuShareLoader
 
             //行情点击事件订阅-生成窗口展示
             m_marketDataForm.MarketDataUserControlSelf.BanKuaiEvent += MarketDataUserControlSelf_BanKuaiEvent; ;
+            m_marketDataForm.MarketDataUserControlSelf.BanKuaiSycEvent += MarketDataUserControlSelf_BanKuaiSycEvent;
 
+        }
+
+        private void MarketDataUserControlSelf_BanKuaiSycEvent(string bankuaiName)
+        {
+            foreach (Form f in m_BanKuaiFormList)
+            {
+                if ((f as Form1) != null && (f as Form1).Text == bankuaiName)
+                {
+                    (f as Form1).Activate();
+                    break;
+                }
+            }
         }
 
         private int m_formNum = 0;
@@ -141,7 +154,7 @@ namespace TuShareLoader
                 case 1:
                     foreach(Form1 f in m_BanKuaiFormList)
                     {
-                        f.MenuItem_Click(null, null);
+                        f.NoVisualPartStocks();
                     }
 
                     this.ToolStripMenuItem_AllVisual.Checked = false;
@@ -149,11 +162,20 @@ namespace TuShareLoader
                     break;
 
                 case 0:
+                    foreach (Form1 f in m_BanKuaiFormList)
+                    {
+                        f.YesVisualAllStocks();
+                    }
 
                     this.ToolStripMenuItem_AllVisual.Checked = true;
                     m_isAllVisableDownStock = 1;
                     break;
             }
+        }
+
+        private void ToolStripMenuItem_HoldAllClick(object sender, EventArgs e)
+        {
+            this.m_marketDataForm.MarketDataUserControlSelf.CalAllBanKuaiData();
         }
     }
 }

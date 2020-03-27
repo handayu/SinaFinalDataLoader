@@ -61,28 +61,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="DataCenter\DataHandler.cs" />
+    <Compile Include="Form\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Form\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="Form\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
+    <Compile Include="Form\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="MarketDataUserControl.cs">
+    <Compile Include="UserControl\MarketDataUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MarketDataUserControl.Designer.cs">
+    <Compile Include="UserControl\MarketDataUserControl.Designer.cs">
       <DependentUpon>MarketDataUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MarketDataUserForm.cs">
+    <Compile Include="Form\MarketDataUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MarketDataUserForm.Designer.cs">
+    <Compile Include="Form\MarketDataUserForm.Designer.cs">
       <DependentUpon>MarketDataUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -91,16 +93,16 @@
     <Compile Include="TuShare\JsonDataContractJsonSerializer.cs" />
     <Compile Include="TuShare\HttpHelper.cs" />
     <Compile Include="TuShare\RequestData.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Form\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
+    <EmbeddedResource Include="Form\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MarketDataUserControl.resx">
+    <EmbeddedResource Include="UserControl\MarketDataUserControl.resx">
       <DependentUpon>MarketDataUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MarketDataUserForm.resx">
+    <EmbeddedResource Include="Form\MarketDataUserForm.resx">
       <DependentUpon>MarketDataUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />

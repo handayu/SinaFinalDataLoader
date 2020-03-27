@@ -38,7 +38,7 @@
             this.marketDataUserControl1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.marketDataUserControl1.Location = new System.Drawing.Point(0, 0);
             this.marketDataUserControl1.Name = "marketDataUserControl1";
-            this.marketDataUserControl1.Size = new System.Drawing.Size(258, 295);
+            this.marketDataUserControl1.Size = new System.Drawing.Size(272, 592);
             this.marketDataUserControl1.TabIndex = 0;
             // 
             // MarketDataUserForm
@@ -46,7 +46,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(258, 295);
+            this.ClientSize = new System.Drawing.Size(272, 592);
             this.Controls.Add(this.marketDataUserControl1);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

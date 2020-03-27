@@ -20,4 +20,20 @@ namespace TuShareLoader
             set;
         }
     }
+
+    public class BanKuaiQiangdu
+    {
+        public string BanKuaiName
+        {
+            get;
+            set;
+        }
+
+        public double BanKuaiQiangduNum
+        {
+            get;
+            set;
+        }
+    }
+
 }
