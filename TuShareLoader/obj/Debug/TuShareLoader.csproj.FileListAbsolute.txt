@@ -1,7 +1,6 @@
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\TuShareLoader.exe.config
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\TuShareLoader.exe
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\TuShareLoader.pdb
-C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.Properties.Resources.resources
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.csproj.GenerateResource.cache
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.csproj.CoreCompileInputs.cache
@@ -30,3 +29,5 @@ C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\zh-tw
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.FormMain.resources
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.MarketDataUserControl.resources
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.MarketDataUserForm.resources
+C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.FormStandard.resources

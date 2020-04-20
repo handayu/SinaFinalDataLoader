@@ -129,6 +129,9 @@ namespace TuShareLoader
 
         }
 
+        /// <summary>
+        /// 显示板块所有的品种 
+        /// </summary>
         public void YesVisualAllStocks()
         {
             this.progressBar1.Value = 50;
@@ -142,6 +145,9 @@ namespace TuShareLoader
             zedGraphControl1.Refresh();
         }
 
+        /// <summary>
+        /// 只显示部分强势的品种 
+        /// </summary>
         public void NoVisualPartStocks()
         {
             this.progressBar1.Value = 50;
@@ -157,7 +163,79 @@ namespace TuShareLoader
             }
             zedGraphControl1.Refresh();
             this.progressBar1.Value = 100;
+        }
 
+        /// <summary>
+        /// 只显示强前五的品种
+        /// </summary>
+        public void VisualJustMaxMinStrongStocks()
+        {
+            this.progressBar1.Value = 50;
+
+            //先把所有的曲线隐藏
+            GraphPane mPane2 = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+            CurveList curList2 = mPane2.CurveList;
+            foreach (CurveItem curItem in curList2)
+            {
+                curItem.IsVisible = false;
+            }
+
+            //把所有的最后的板块内部的股票数据都加入Dic中便于之后排序取前五
+            Dictionary<string, double> curveNameValueList = new Dictionary<string, double>();
+            GraphPane mPane1 = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+            CurveList curList = mPane1.CurveList;
+            foreach (CurveItem curItem in curList)
+            {
+                if (curItem.Points[curItem.Points.Count - 1].Y >= 0)
+                {
+                    curveNameValueList.Add(curItem.Label.Text, curItem.Points[curItem.Points.Count - 1].Y);
+                }
+            }
+
+            //排序-LinQ按照Dic的Value值进行排序-OrderByDescending降序
+            Dictionary<string, double> sortedByValueList = curveNameValueList.OrderByDescending(o => o.Value).ToDictionary(p => p.Key, o => o.Value);
+
+            //小于五个的全部显示，大于五个的，只显示五个
+            if (sortedByValueList.Count >= 5)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    string cULabel = sortedByValueList.ElementAt(i).Key;
+
+                    GraphPane mPane3 = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+                    CurveList curList3 = mPane3.CurveList;
+                    foreach (CurveItem curItem in curList3)
+                    {
+                        if (curItem.Label.Text.CompareTo(cULabel) == 0)
+                        {
+                            curItem.IsVisible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (KeyValuePair<string, double> kpiar in sortedByValueList)
+                {
+                    string cULabel = kpiar.Key;
+
+                    GraphPane mPane3 = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+                    CurveList curList3 = mPane3.CurveList;
+                    foreach (CurveItem curItem in curList3)
+                    {
+                        if (curItem.Label.Text.CompareTo(cULabel) == 0)
+                        {
+                            curItem.IsVisible = true;
+                            break;
+                        }
+                    }
+                }
+
+            }
+
+
+            zedGraphControl1.Refresh();
             this.progressBar1.Value = 100;
         }
     }

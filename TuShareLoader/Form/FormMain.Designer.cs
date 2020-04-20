@@ -56,10 +56,12 @@
             this.平铺ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_AllVisual = new System.Windows.Forms.ToolStripMenuItem();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_HoldAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.ToolStripMenuItem_ViewMaxMinFiveStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Standerd = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +73,8 @@
             this.文件ToolStripMenuItem,
             this.帮助HToolStripMenuItem,
             this.布局ToolStripMenuItem,
-            this.功能ToolStripMenuItem});
+            this.功能ToolStripMenuItem,
+            this.ToolStripMenuItem_Standerd});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1125, 25);
@@ -109,13 +112,13 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.关于ToolStripMenuItem.Text = "关于(A)";
             // 
             // teamViwerToolStripMenuItem
             // 
             this.teamViwerToolStripMenuItem.Name = "teamViwerToolStripMenuItem";
-            this.teamViwerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.teamViwerToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             // 
             // 布局ToolStripMenuItem
             // 
@@ -124,7 +127,8 @@
             this.竖向ToolStripMenuItem,
             this.平铺ToolStripMenuItem,
             this.toolStripSeparator1,
-            this.ToolStripMenuItem_AllVisual});
+            this.ToolStripMenuItem_AllVisual,
+            this.ToolStripMenuItem_ViewMaxMinFiveStock});
             this.布局ToolStripMenuItem.Name = "布局ToolStripMenuItem";
             this.布局ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.布局ToolStripMenuItem.Text = "布局";
@@ -133,7 +137,7 @@
             // 
             this.横向ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_layout_48;
             this.横向ToolStripMenuItem.Name = "横向ToolStripMenuItem";
-            this.横向ToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.横向ToolStripMenuItem.Size = new System.Drawing.Size(192, 30);
             this.横向ToolStripMenuItem.Text = "横向";
             this.横向ToolStripMenuItem.Click += new System.EventHandler(this.HToolStripMenuItem_Click);
             // 
@@ -141,7 +145,7 @@
             // 
             this.竖向ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_select_column_48;
             this.竖向ToolStripMenuItem.Name = "竖向ToolStripMenuItem";
-            this.竖向ToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.竖向ToolStripMenuItem.Size = new System.Drawing.Size(192, 30);
             this.竖向ToolStripMenuItem.Text = "竖向";
             this.竖向ToolStripMenuItem.Click += new System.EventHandler(this.VToolStripMenuItem_Click);
             // 
@@ -149,23 +153,38 @@
             // 
             this.平铺ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_vertical_timeline_48;
             this.平铺ToolStripMenuItem.Name = "平铺ToolStripMenuItem";
-            this.平铺ToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.平铺ToolStripMenuItem.Size = new System.Drawing.Size(192, 30);
             this.平铺ToolStripMenuItem.Text = "平铺";
             this.平铺ToolStripMenuItem.Click += new System.EventHandler(this.WToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(189, 6);
             // 
             // ToolStripMenuItem_AllVisual
             // 
             this.ToolStripMenuItem_AllVisual.Checked = true;
             this.ToolStripMenuItem_AllVisual.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ToolStripMenuItem_AllVisual.Name = "ToolStripMenuItem_AllVisual";
-            this.ToolStripMenuItem_AllVisual.Size = new System.Drawing.Size(188, 30);
+            this.ToolStripMenuItem_AllVisual.Size = new System.Drawing.Size(192, 30);
             this.ToolStripMenuItem_AllVisual.Text = "全部显示/隐藏弱势";
             this.ToolStripMenuItem_AllVisual.Click += new System.EventHandler(this.ToolStripMenuItem_AllVisualClick);
+            // 
+            // 功能ToolStripMenuItem
+            // 
+            this.功能ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_HoldAll});
+            this.功能ToolStripMenuItem.Name = "功能ToolStripMenuItem";
+            this.功能ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.功能ToolStripMenuItem.Text = "功能";
+            // 
+            // ToolStripMenuItem_HoldAll
+            // 
+            this.ToolStripMenuItem_HoldAll.Name = "ToolStripMenuItem_HoldAll";
+            this.ToolStripMenuItem_HoldAll.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_HoldAll.Text = "一键所有板块";
+            this.ToolStripMenuItem_HoldAll.Click += new System.EventHandler(this.ToolStripMenuItem_HoldAllClick);
             // 
             // dockPanel1
             // 
@@ -181,7 +200,7 @@
             tabGradient1.StartColor = System.Drawing.SystemColors.Control;
             tabGradient1.TextColor = System.Drawing.SystemColors.ControlDarkDark;
             autoHideStripSkin1.TabGradient = tabGradient1;
-            autoHideStripSkin1.TextFont = new System.Drawing.Font("微软雅黑", 9F);
+            autoHideStripSkin1.TextFont = new System.Drawing.Font("Microsoft YaHei", 9F);
             dockPanelSkin1.AutoHideStripSkin = autoHideStripSkin1;
             tabGradient2.EndColor = System.Drawing.SystemColors.ControlLightLight;
             tabGradient2.StartColor = System.Drawing.SystemColors.ControlLightLight;
@@ -195,7 +214,7 @@
             tabGradient3.TextColor = System.Drawing.SystemColors.ControlText;
             dockPaneStripGradient1.InactiveTabGradient = tabGradient3;
             dockPaneStripSkin1.DocumentGradient = dockPaneStripGradient1;
-            dockPaneStripSkin1.TextFont = new System.Drawing.Font("微软雅黑", 9F);
+            dockPaneStripSkin1.TextFont = new System.Drawing.Font("Microsoft YaHei", 9F);
             tabGradient4.EndColor = System.Drawing.SystemColors.ActiveCaption;
             tabGradient4.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             tabGradient4.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -222,20 +241,19 @@
             this.dockPanel1.Skin = dockPanelSkin1;
             this.dockPanel1.TabIndex = 5;
             // 
-            // 功能ToolStripMenuItem
+            // ToolStripMenuItem_ViewMaxMinFiveStock
             // 
-            this.功能ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_HoldAll});
-            this.功能ToolStripMenuItem.Name = "功能ToolStripMenuItem";
-            this.功能ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.功能ToolStripMenuItem.Text = "功能";
+            this.ToolStripMenuItem_ViewMaxMinFiveStock.Name = "ToolStripMenuItem_ViewMaxMinFiveStock";
+            this.ToolStripMenuItem_ViewMaxMinFiveStock.Size = new System.Drawing.Size(192, 30);
+            this.ToolStripMenuItem_ViewMaxMinFiveStock.Text = "显示最强最弱的五只";
+            this.ToolStripMenuItem_ViewMaxMinFiveStock.Click += new System.EventHandler(this.ToolStripMenuItem_ViewMaxMinFiveStockClick);
             // 
-            // ToolStripMenuItem_HoldAll
+            // ToolStripMenuItem_Standerd
             // 
-            this.ToolStripMenuItem_HoldAll.Name = "ToolStripMenuItem_HoldAll";
-            this.ToolStripMenuItem_HoldAll.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_HoldAll.Text = "一键所有板块";
-            this.ToolStripMenuItem_HoldAll.Click += new System.EventHandler(this.ToolStripMenuItem_HoldAllClick);
+            this.ToolStripMenuItem_Standerd.Name = "ToolStripMenuItem_Standerd";
+            this.ToolStripMenuItem_Standerd.Size = new System.Drawing.Size(108, 21);
+            this.ToolStripMenuItem_Standerd.Text = "编制与筛选基准 ";
+            this.ToolStripMenuItem_Standerd.Click += new System.EventHandler(this.ToolStripMenuItem_StanderdClick);
             // 
             // FormMain
             // 
@@ -245,7 +263,7 @@
             this.ClientSize = new System.Drawing.Size(1125, 593);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dockPanel1);
-            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
@@ -281,6 +299,8 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_AllVisual;
         private System.Windows.Forms.ToolStripMenuItem 功能ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_HoldAll;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ViewMaxMinFiveStock;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Standerd;
     }
 }
 

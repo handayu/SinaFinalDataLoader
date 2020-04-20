@@ -177,7 +177,29 @@ namespace TuShareLoader
         {
             this.m_marketDataForm.MarketDataUserControlSelf.CalAllBanKuaiData();
         }
+
+        /// <summary>
+        /// 显示最强和最弱的五只进行龙头跟踪
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_ViewMaxMinFiveStockClick(object sender, EventArgs e)
+        {
+            foreach (Form1 f in m_BanKuaiFormList)
+            {
+                f.VisualJustMaxMinStrongStocks();
+            }
+        }
+
+        private void ToolStripMenuItem_StanderdClick(object sender, EventArgs e)
+        {
+            FormStandard s = new FormStandard();
+            s.Show();
+        }
     }
 }
 
-
+
+
+	
+
