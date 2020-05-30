@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -195,6 +196,41 @@ namespace TuShareLoader
         {
             FormStandard s = new FormStandard();
             s.Show();
+        }
+
+        /// <summary>
+        /// 将toShare-Api查询回来的数据全部输入到Dic-Files中
+        /// 每一个板块名称是一个文件夹 - 每个文件夹下每只个股有自己的独立的数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void apiToFileDisToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            List<BanKuaiDta>  banKuaiAndStockinfos = DataHandler.HandleBanKuaiAndStocks();
+            foreach(BanKuaiDta dataInfo in banKuaiAndStockinfos)
+            {
+                string bankuaiName = dataInfo.BanKuaiName;
+                List<string> stockCodeList = dataInfo.BanKuaiStockList;
+
+                string dir = AppDomain.CurrentDomain.BaseDirectory + "A-StockData" + "/" + bankuaiName;
+                //每个板块创建一个文件夹
+                if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+                //每个板块的文件夹下每个个股有一个txt数据
+                foreach(string code in stockCodeList)
+                {
+                    //剪切掉.SH .SZ因为文件不允许这样命名
+                    string[] codeInfoArray = code.Split('.');
+                    string codeRl = codeInfoArray[0];
+                    string stockCodeDir = AppDomain.CurrentDomain.BaseDirectory + "A-StockData" + "/" + bankuaiName + "/" + codeRl + ".txt";
+                    if (!File.Exists(stockCodeDir)) File.Create(stockCodeDir);
+                }
+            }
+
+            //写入txt每只个股的数据
+            //数据结构：板块 - 个股 - 个股数据
+            Dictionary<string, Dictionary<string, List<List<string>>>> banKuaiStockDataDic = DataHandler.BanKuaiStockDataDic;
+
+
         }
     }
 }

@@ -56,12 +56,13 @@
             this.平铺ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_AllVisual = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ViewMaxMinFiveStock = new System.Windows.Forms.ToolStripMenuItem();
             this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_HoldAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_Standerd = new System.Windows.Forms.ToolStripMenuItem();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.ToolStripMenuItem_ViewMaxMinFiveStock = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Standerd = new System.Windows.Forms.ToolStripMenuItem();
+            this.apiToFileDisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,7 +138,7 @@
             // 
             this.横向ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_layout_48;
             this.横向ToolStripMenuItem.Name = "横向ToolStripMenuItem";
-            this.横向ToolStripMenuItem.Size = new System.Drawing.Size(192, 30);
+            this.横向ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.横向ToolStripMenuItem.Text = "横向";
             this.横向ToolStripMenuItem.Click += new System.EventHandler(this.HToolStripMenuItem_Click);
             // 
@@ -145,7 +146,7 @@
             // 
             this.竖向ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_select_column_48;
             this.竖向ToolStripMenuItem.Name = "竖向ToolStripMenuItem";
-            this.竖向ToolStripMenuItem.Size = new System.Drawing.Size(192, 30);
+            this.竖向ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.竖向ToolStripMenuItem.Text = "竖向";
             this.竖向ToolStripMenuItem.Click += new System.EventHandler(this.VToolStripMenuItem_Click);
             // 
@@ -153,28 +154,36 @@
             // 
             this.平铺ToolStripMenuItem.Image = global::TuShareLoader.Properties.Resources.icons8_vertical_timeline_48;
             this.平铺ToolStripMenuItem.Name = "平铺ToolStripMenuItem";
-            this.平铺ToolStripMenuItem.Size = new System.Drawing.Size(192, 30);
+            this.平铺ToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.平铺ToolStripMenuItem.Text = "平铺";
             this.平铺ToolStripMenuItem.Click += new System.EventHandler(this.WToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(189, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(181, 6);
             // 
             // ToolStripMenuItem_AllVisual
             // 
             this.ToolStripMenuItem_AllVisual.Checked = true;
             this.ToolStripMenuItem_AllVisual.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ToolStripMenuItem_AllVisual.Name = "ToolStripMenuItem_AllVisual";
-            this.ToolStripMenuItem_AllVisual.Size = new System.Drawing.Size(192, 30);
+            this.ToolStripMenuItem_AllVisual.Size = new System.Drawing.Size(184, 22);
             this.ToolStripMenuItem_AllVisual.Text = "全部显示/隐藏弱势";
             this.ToolStripMenuItem_AllVisual.Click += new System.EventHandler(this.ToolStripMenuItem_AllVisualClick);
+            // 
+            // ToolStripMenuItem_ViewMaxMinFiveStock
+            // 
+            this.ToolStripMenuItem_ViewMaxMinFiveStock.Name = "ToolStripMenuItem_ViewMaxMinFiveStock";
+            this.ToolStripMenuItem_ViewMaxMinFiveStock.Size = new System.Drawing.Size(184, 22);
+            this.ToolStripMenuItem_ViewMaxMinFiveStock.Text = "显示最强最弱的五只";
+            this.ToolStripMenuItem_ViewMaxMinFiveStock.Click += new System.EventHandler(this.ToolStripMenuItem_ViewMaxMinFiveStockClick);
             // 
             // 功能ToolStripMenuItem
             // 
             this.功能ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_HoldAll});
+            this.ToolStripMenuItem_HoldAll,
+            this.apiToFileDisToolStripMenuItem});
             this.功能ToolStripMenuItem.Name = "功能ToolStripMenuItem";
             this.功能ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.功能ToolStripMenuItem.Text = "功能";
@@ -182,9 +191,16 @@
             // ToolStripMenuItem_HoldAll
             // 
             this.ToolStripMenuItem_HoldAll.Name = "ToolStripMenuItem_HoldAll";
-            this.ToolStripMenuItem_HoldAll.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItem_HoldAll.Text = "一键所有板块";
+            this.ToolStripMenuItem_HoldAll.Size = new System.Drawing.Size(225, 22);
+            this.ToolStripMenuItem_HoldAll.Text = "一键所有板块(toShare-Api)";
             this.ToolStripMenuItem_HoldAll.Click += new System.EventHandler(this.ToolStripMenuItem_HoldAllClick);
+            // 
+            // ToolStripMenuItem_Standerd
+            // 
+            this.ToolStripMenuItem_Standerd.Name = "ToolStripMenuItem_Standerd";
+            this.ToolStripMenuItem_Standerd.Size = new System.Drawing.Size(108, 21);
+            this.ToolStripMenuItem_Standerd.Text = "编制与筛选基准 ";
+            this.ToolStripMenuItem_Standerd.Click += new System.EventHandler(this.ToolStripMenuItem_StanderdClick);
             // 
             // dockPanel1
             // 
@@ -241,19 +257,12 @@
             this.dockPanel1.Skin = dockPanelSkin1;
             this.dockPanel1.TabIndex = 5;
             // 
-            // ToolStripMenuItem_ViewMaxMinFiveStock
+            // apiToFileDisToolStripMenuItem
             // 
-            this.ToolStripMenuItem_ViewMaxMinFiveStock.Name = "ToolStripMenuItem_ViewMaxMinFiveStock";
-            this.ToolStripMenuItem_ViewMaxMinFiveStock.Size = new System.Drawing.Size(192, 30);
-            this.ToolStripMenuItem_ViewMaxMinFiveStock.Text = "显示最强最弱的五只";
-            this.ToolStripMenuItem_ViewMaxMinFiveStock.Click += new System.EventHandler(this.ToolStripMenuItem_ViewMaxMinFiveStockClick);
-            // 
-            // ToolStripMenuItem_Standerd
-            // 
-            this.ToolStripMenuItem_Standerd.Name = "ToolStripMenuItem_Standerd";
-            this.ToolStripMenuItem_Standerd.Size = new System.Drawing.Size(108, 21);
-            this.ToolStripMenuItem_Standerd.Text = "编制与筛选基准 ";
-            this.ToolStripMenuItem_Standerd.Click += new System.EventHandler(this.ToolStripMenuItem_StanderdClick);
+            this.apiToFileDisToolStripMenuItem.Name = "apiToFileDisToolStripMenuItem";
+            this.apiToFileDisToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.apiToFileDisToolStripMenuItem.Text = "Api To File-Dis";
+            this.apiToFileDisToolStripMenuItem.Click += new System.EventHandler(this.apiToFileDisToolStripMenuItemClick);
             // 
             // FormMain
             // 
@@ -301,6 +310,7 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_HoldAll;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ViewMaxMinFiveStock;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Standerd;
+        private System.Windows.Forms.ToolStripMenuItem apiToFileDisToolStripMenuItem;
     }
 }
 
