@@ -16,6 +16,9 @@ namespace TuShareLoader
 {
     public partial class Form1 : Form
     {
+
+        private List<LineItem> m_LineItemList = new List<LineItem>();
+
         public Form1()
         {
             InitializeComponent();
@@ -93,6 +96,10 @@ namespace TuShareLoader
                     }
 
                     LineItem mCure = mPane.AddCurve(kp.Key, dataList, Common.GetRandomColor(), SymbolType.None);
+                    m_LineItemList.Add(mCure);
+                    //LineItem line = (LineItem)mCure;
+                    //line.Line.Width = 200;
+                    //line.Line.IsSmooth = true;
                     zedGraphControl1.AxisChange();//画到zedGraphControl1控件中，此句必加        
 
                 }
@@ -101,9 +108,29 @@ namespace TuShareLoader
 
         private string zGCDateChart_PointValueEvent(ZedGraphControl sender, GraphPane pane, CurveItem curve, int iPt)
         {
+            GraphPane mPane = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+
             curve.IsSelectable = true;
             curve.IsSelected = true;
             PointPair pt = curve[iPt];
+
+            foreach(LineItem item in m_LineItemList)
+            {
+                if(item.Label.Text != curve.Label.Text)
+                {
+                    item.Line.Width = 1;
+                    item.Line.IsSmooth = true;
+                }
+
+                if (item.Label.Text == curve.Label.Text)
+                {
+                    item.Line.Width = 5;
+                    item.Line.IsSmooth = true;
+                }
+            }
+
+            zedGraphControl1.Invalidate();
+
             return curve.Label.Text + ":" + pt.X.ToString() + "/" + pt.Y.ToString();
 
         }
@@ -243,5 +270,7 @@ namespace TuShareLoader
 
 
 
-
-
+
+
+
+
