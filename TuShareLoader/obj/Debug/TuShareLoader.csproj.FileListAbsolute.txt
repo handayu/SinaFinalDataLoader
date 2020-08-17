@@ -10,7 +10,6 @@ C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuSha
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.csproj.CopyComplete
-C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.exe.licenses
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\ZedGraph.dll
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\ZedGraph.xml
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\de\ZedGraph.resources.dll
@@ -29,5 +28,7 @@ C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\bin\Debug\zh-tw
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.FormMain.resources
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.MarketDataUserControl.resources
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.MarketDataUserForm.resources
-C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.FormStandard.resources
+C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.FormWenHuaManger.resources
+C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\SinaFinalDataLoader\TuShareLoader\obj\Debug\TuShareLoader.FormAddSelBanKuai.resources

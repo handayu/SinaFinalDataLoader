@@ -266,6 +266,30 @@ namespace TuShareLoader
                     break;
             }
         }
+
+        /// <summary>
+        /// 板块管理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WenHua_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs args = (MouseEventArgs)e;
+
+            //左右键切换
+            if (MouseButtons.Right == args.Button)
+            {
+                //右键弹出文华板块管理终端
+                FormWenHuaManger FManager = new FormWenHuaManger();
+                FManager.Show();
+            }
+            else
+            {
+                //左键点击显示并打开KForm显示
+
+
+            }
+        }
     }
 }
 
