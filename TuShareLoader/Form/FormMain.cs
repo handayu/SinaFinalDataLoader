@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,6 +35,7 @@ namespace TuShareLoader
                 }
             }
 
+            LoadFromConfig();
 
             //生成所有的有业务对象-然后再在这里管理所有的事件通知
             m_marketDataForm = new MarketDataUserForm();
@@ -42,7 +44,22 @@ namespace TuShareLoader
             //行情点击事件订阅-生成窗口展示
             m_marketDataForm.MarketDataUserControlSelf.BanKuaiEvent += MarketDataUserControlSelf_BanKuaiEvent; ;
             m_marketDataForm.MarketDataUserControlSelf.BanKuaiSycEvent += MarketDataUserControlSelf_BanKuaiSycEvent;
+            m_marketDataForm.MarketDataUserControlSelf.WenHuaBanKuaiEvent += MarketDataUserControlSelf_WenHuaBanKuaiEvent;
 
+            m_marketDataForm.MarketDataUserControlSelf.LoadConfig();
+        }
+
+        private void MarketDataUserControlSelf_WenHuaBanKuaiEvent(string bankuaiName)
+        {
+            //根据板块名称获取下面所有的个股列表数据.dat，翻译为数据，送入form中
+            Form1 form = new Form1(bankuaiName);
+            form.TopLevel = false;//设置为非顶级控件
+            form.MdiParent = this;
+            form.Show();
+
+            m_BanKuaiFormList.Add(form);
+
+            this.LayoutMdi(MdiLayout.TileHorizontal);
         }
 
         private void MarketDataUserControlSelf_BanKuaiSycEvent(string bankuaiName)
@@ -114,6 +131,8 @@ namespace TuShareLoader
 
         private void Form_Closed(object sender, FormClosedEventArgs e)
         {
+            SaveToConfig();
+
             if (m_marketDataForm != null && m_marketDataForm.MarketDataUserControlSelf != null)
             {
                 m_marketDataForm.MarketDataUserControlSelf.BanKuaiEvent -= MarketDataUserControlSelf_BanKuaiEvent;
@@ -121,6 +140,71 @@ namespace TuShareLoader
 
             m_marketDataForm = null;
 
+        }
+
+        /// <summary>
+        /// SaveToConfig
+        /// </summary>
+        private void SaveToConfig()
+        {
+            Dictionary<string, Dictionary<string, string>> datDic = DatDataManager.Instance.BankuaiGeguPathDic;
+
+            if (datDic == null || datDic.Count <= 0 || datDic.Values.Count <= 0) return;
+
+            string pathFolder = AppDomain.CurrentDomain.BaseDirectory + "\\" + "文华板块列表.txt";
+
+            System.IO.StreamWriter fs = new System.IO.StreamWriter(pathFolder);
+
+            foreach (KeyValuePair<string, Dictionary<string, string>> kv in datDic)
+            {
+                string bankuaiName = kv.Key;
+                Dictionary<string, string> geGuDic = kv.Value;
+                foreach (KeyValuePair<string, string> kp in geGuDic)
+                {
+                    fs.WriteLine(bankuaiName + "," + kp.Key + "," + kp.Value);
+                }
+            }
+            fs.Flush();
+        }
+
+        /// <summary>
+        /// LoadFromFonfig
+        /// </summary>
+        private void LoadFromConfig()
+        {
+            Dictionary<string, Dictionary<string, string>> datDic = DatDataManager.Instance.BankuaiGeguPathDic;
+
+            //逐行读取debug下的配置的自定义文华板块及截面的个股对应的数据
+            ArrayList lst = new ArrayList();
+            string pathFolder = AppDomain.CurrentDomain.BaseDirectory + "\\" + "文华板块列表.txt";
+            StreamReader sr = new StreamReader(pathFolder);
+            while (!sr.EndOfStream)
+            {
+                string str = sr.ReadLine();
+
+                string[] strInfoArray = str.Split(',');
+                string bankuaiName = strInfoArray[0];
+                string gegu = strInfoArray[1];
+                string gegupath = strInfoArray[2];
+
+                if(!datDic.Keys.Contains(bankuaiName))//如果没有这个主键，加入
+                {
+                    Dictionary<string, string> vL = new Dictionary<string, string>();
+                    vL.Add(gegu, gegupath);
+                    datDic.Add(bankuaiName, vL);
+                }
+                else
+                {
+                    foreach(KeyValuePair<string,Dictionary<string,string>> kn in datDic)
+                    {
+                        if(kn.Key == bankuaiName)
+                        {
+                            Dictionary<string, string> geguDic = kn.Value;
+                            geguDic.Add(gegu, gegupath);
+                        }
+                    }
+                }
+            }
         }
 
         private void HToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,7 +237,7 @@ namespace TuShareLoader
             switch (m_isAllVisableDownStock)
             {
                 case 1:
-                    foreach(Form1 f in m_BanKuaiFormList)
+                    foreach (Form1 f in m_BanKuaiFormList)
                     {
                         f.NoVisualPartStocks();
                     }
@@ -206,8 +290,8 @@ namespace TuShareLoader
         /// <param name="e"></param>
         private void apiToFileDisToolStripMenuItemClick(object sender, EventArgs e)
         {
-            List<BanKuaiDta>  banKuaiAndStockinfos = DataHandler.HandleBanKuaiAndStocks();
-            foreach(BanKuaiDta dataInfo in banKuaiAndStockinfos)
+            List<BanKuaiDta> banKuaiAndStockinfos = DataHandler.HandleBanKuaiAndStocks();
+            foreach (BanKuaiDta dataInfo in banKuaiAndStockinfos)
             {
                 string bankuaiName = dataInfo.BanKuaiName;
                 List<string> stockCodeList = dataInfo.BanKuaiStockList;
@@ -216,7 +300,7 @@ namespace TuShareLoader
                 //每个板块创建一个文件夹
                 if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
                 //每个板块的文件夹下每个个股有一个txt数据
-                foreach(string code in stockCodeList)
+                foreach (string code in stockCodeList)
                 {
                     //剪切掉.SH .SZ因为文件不允许这样命名
                     string[] codeInfoArray = code.Split('.');
@@ -237,5 +321,5 @@ namespace TuShareLoader
 
 
 
-	
+
 

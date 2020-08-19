@@ -33,5 +33,10 @@ namespace TuShareLoader
             this.marketDataUserControl1.SubScribe();
 
         }
+
+        public void LoadFig(object sender, EventArgs e)
+        {
+            this.marketDataUserControl1.LoadConfig();
+        }
     }
 }

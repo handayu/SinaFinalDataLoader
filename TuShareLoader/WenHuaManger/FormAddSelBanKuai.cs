@@ -12,25 +12,25 @@ namespace TuShareLoader
 {
     public partial class FormAddSelBanKuai : Form
     {
-        private string m_selBanKuaiName = string.Empty;
+        private string m_bankuaiName = string.Empty;
 
         public string BanKuaiName
         {
             get
             {
-                return m_selBanKuaiName;
+                return m_bankuaiName;
             }
         }
+
 
         public FormAddSelBanKuai()
         {
             InitializeComponent();
         }
 
-
-        private void Button1_Click(object sender, EventArgs e)
+        private void Button_ok_Click(object sender, EventArgs e)
         {
-            this.m_selBanKuaiName = this.textBox_SelName.Text;
+            this.m_bankuaiName = this.textBox1.Text.Replace("\0", "").Trim();
             this.Close();
         }
     }

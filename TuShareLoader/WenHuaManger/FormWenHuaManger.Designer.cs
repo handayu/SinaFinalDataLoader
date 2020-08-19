@@ -49,6 +49,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Controls.Add(this.button_Ok);
             this.groupBox1.Controls.Add(this.textBox_path);
             this.groupBox1.Controls.Add(this.label1);
@@ -100,17 +101,18 @@
             // 
             // listBox_Level2
             // 
-            this.listBox_Level2.BackColor = System.Drawing.SystemColors.Menu;
+            this.listBox_Level2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listBox_Level2.FormattingEnabled = true;
             this.listBox_Level2.ItemHeight = 12;
             this.listBox_Level2.Location = new System.Drawing.Point(141, 20);
             this.listBox_Level2.Name = "listBox_Level2";
-            this.listBox_Level2.Size = new System.Drawing.Size(128, 460);
+            this.listBox_Level2.Size = new System.Drawing.Size(209, 460);
             this.listBox_Level2.TabIndex = 4;
+            this.listBox_Level2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Level2_MouseUp);
             // 
             // listBox_Level1
             // 
-            this.listBox_Level1.BackColor = System.Drawing.SystemColors.Menu;
+            this.listBox_Level1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listBox_Level1.FormattingEnabled = true;
             this.listBox_Level1.ItemHeight = 12;
             this.listBox_Level1.Location = new System.Drawing.Point(7, 21);
@@ -121,10 +123,10 @@
             // 
             // richTextBox_Data
             // 
-            this.richTextBox_Data.BackColor = System.Drawing.SystemColors.Menu;
-            this.richTextBox_Data.Location = new System.Drawing.Point(275, 20);
+            this.richTextBox_Data.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.richTextBox_Data.Location = new System.Drawing.Point(356, 20);
             this.richTextBox_Data.Name = "richTextBox_Data";
-            this.richTextBox_Data.Size = new System.Drawing.Size(372, 461);
+            this.richTextBox_Data.Size = new System.Drawing.Size(291, 461);
             this.richTextBox_Data.TabIndex = 2;
             this.richTextBox_Data.Text = "";
             // 
@@ -144,7 +146,7 @@
             // 
             // listBox_ChengfenData
             // 
-            this.listBox_ChengfenData.BackColor = System.Drawing.SystemColors.Menu;
+            this.listBox_ChengfenData.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listBox_ChengfenData.FormattingEnabled = true;
             this.listBox_ChengfenData.ItemHeight = 12;
             this.listBox_ChengfenData.Location = new System.Drawing.Point(11, 198);
@@ -154,7 +156,7 @@
             // 
             // listBox_SelfBanKuai
             // 
-            this.listBox_SelfBanKuai.BackColor = System.Drawing.SystemColors.Menu;
+            this.listBox_SelfBanKuai.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.listBox_SelfBanKuai.FormattingEnabled = true;
             this.listBox_SelfBanKuai.ItemHeight = 12;
             this.listBox_SelfBanKuai.Location = new System.Drawing.Point(9, 20);

@@ -99,6 +99,7 @@
     <Compile Include="TuShare\JsonDataContractJsonSerializer.cs" />
     <Compile Include="TuShare\HttpHelper.cs" />
     <Compile Include="TuShare\RequestData.cs" />
+    <Compile Include="WenHuaManger\DatData.cs" />
     <Compile Include="WenHuaManger\FormAddSelBanKuai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,9 +112,7 @@
     <Compile Include="WenHuaManger\FormWenHuaManger.Designer.cs">
       <DependentUpon>FormWenHuaManger.cs</DependentUpon>
     </Compile>
-    <Compile Include="WenHuaManger\MarketData.cs" />
     <Compile Include="WenHuaManger\WenHuaDataHandle.cs" />
-    <Compile Include="WenHuaManger\WenHuaSelConfig.cs" />
     <EmbeddedResource Include="Form\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

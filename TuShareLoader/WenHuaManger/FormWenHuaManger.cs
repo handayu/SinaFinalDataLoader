@@ -13,8 +13,6 @@ namespace TuShareLoader
 {
     public partial class FormWenHuaManger : Form
     {
-        private Dictionary<string, List<string>> m_bankuaiAndSelGegu = new Dictionary<string, List<string>>();
-
         public FormWenHuaManger()
         {
             InitializeComponent();
@@ -27,10 +25,6 @@ namespace TuShareLoader
         /// <param name="e"></param>
         private void Button_Ok_Click(object sender, EventArgs e)
         {
-
-            //保存配置
-
-
             //清空所有
             ClearBox();
 
@@ -79,17 +73,20 @@ namespace TuShareLoader
             this.listBox_SelfBanKuai.SelectedItem.ToString() != ""
             )
             {
-                foreach (KeyValuePair<string, List<string>> kv in m_bankuaiAndSelGegu)
+                foreach(KeyValuePair<string,Dictionary<string,string>> kv in DatDataManager.Instance.BankuaiGeguPathDic)
                 {
-                    string bankuai = kv.Key;
-                    if (bankuai != this.listBox_SelfBanKuai.SelectedItem.ToString()) continue;
-                    List<string> geguList = kv.Value;
-                    string path = this.textBox_path.Text.Replace("\r\n", "");
-                    string pathData = path + this.listBox_Level1.SelectedItem.ToString() + "\\" + this.listBox_Level2.SelectedItem.ToString();
+                    if (kv.Key != this.listBox_SelfBanKuai.SelectedItem.ToString()) continue;
 
-                    geguList.Add(pathData);
+                    Level2Info infos = this.listBox_Level2.SelectedItem as Level2Info;
 
-                    this.listBox_ChengfenData.Items.Add(pathData);
+                    Dictionary<string, string> geguNamePathStr = kv.Value;
+                    geguNamePathStr.Add(infos.Instrument.Replace("\0","").Trim(),
+                                    this.textBox_path.Text.Replace("\r\n", "") + this.listBox_Level1.SelectedItem.ToString()
+                                    + "\\" + "day\\" + infos.DataCodeStr + ".dat");
+
+                    this.listBox_ChengfenData.Items.Add(infos.Instrument + " " +
+                                    this.textBox_path.Text.Replace("\r\n", "")  + this.listBox_Level1.SelectedItem.ToString()
+                                    + "\\" + "day\\" + infos.DataCodeStr + ".dat");
                 }
             }
         }
@@ -102,29 +99,30 @@ namespace TuShareLoader
         private void Button_Remove_Click(object sender, EventArgs e)
         {
 
-            if (this.listBox_ChengfenData.SelectedItem == null ||
-            this.listBox_ChengfenData.SelectedItem.ToString() == "" ||
-            this.listBox_SelfBanKuai.SelectedItem == null ||
-            this.listBox_SelfBanKuai.SelectedItem.ToString() == "")
-            {
-                MessageBox.Show("请选择要移除的品种以及品种所属的板块！");
-                return;
-            }
+            //if (this.listBox_ChengfenData.SelectedItem == null ||
+            //this.listBox_ChengfenData.SelectedItem.ToString() == "" ||
+            //this.listBox_SelfBanKuai.SelectedItem == null ||
+            //this.listBox_SelfBanKuai.SelectedItem.ToString() == "")
+            //{
+            //    MessageBox.Show("请选择要移除的品种以及品种所属的板块！");
+            //    return;
+            //}
 
-            foreach (KeyValuePair<string, List<string>> kv in m_bankuaiAndSelGegu)
-            {
-                if (kv.Key != this.listBox_SelfBanKuai.SelectedItem.ToString()) continue;
-                List<string> geguList = kv.Value;
-                int index = 0;
-                for (int i = 0;i<geguList.Count;i++)
-                {
-                    if (this.listBox_ChengfenData.SelectedItem!=null && geguList[i] != this.listBox_ChengfenData.SelectedItem.ToString()) continue;
-                    this.listBox_ChengfenData.Items.Remove(this.listBox_ChengfenData.SelectedItem);
-                    //从内存表中也要移除；
-                    index = i;
-                }
-                geguList.RemoveAt(index);
-            }
+            //foreach (KeyValuePair<string, Dictionary<string,string>> kv in DatDataManager.Instance.BankuaiGeguPathDic)
+            //{
+            //    if (kv.Key != this.listBox_SelfBanKuai.SelectedItem.ToString()) continue;
+            //    Dictionary<string, string> gegupair = kv.Value;
+            //    object itemSel = null;
+            //    foreach(KeyValuePair<string,string> kv2 in gegupair)
+            //    {
+            //        if(this.listBox_ChengfenData.SelectedItem.ToString().Contains(kv2.Key))
+            //        {
+            //            itemSel = this.listBox_ChengfenData.SelectedItem;
+            //            gegupair.Remove(kv2.Key);
+            //        }
+            //    }
+            //    if(itemSel != null) this.listBox_ChengfenData.Items.Remove(itemSel);
+            //}
         }
 
         /// <summary>
@@ -134,8 +132,7 @@ namespace TuShareLoader
         /// <param name="e"></param>
         private void Button_Save_Click(object sender, EventArgs e)
         {
-            WenHuaSelConfig.Instance.BanKuaiAndGegu = m_bankuaiAndSelGegu;
-            WenHuaSelConfig.Instance.Path = this.textBox_path.Text.Replace("\r\n", "");
+            this.Close();
         }
 
         /// <summary>
@@ -152,11 +149,12 @@ namespace TuShareLoader
 
                 string path = this.textBox_path.Text.Replace("\r\n", "");
                 string pathData = path + this.listBox_Level1.SelectedItem.ToString() + "\\cont.dat";
-                List<string> level2List = WenHuaDataHandle.GetConDatData(pathData);
-                foreach (string str in level2List)
+                List<Level2Info> level2List = WenHuaDataHandle.GetConDatData(pathData);
+                foreach (Level2Info info in level2List)
                 {
-                    this.listBox_Level2.Items.Add(str);
+                    this.listBox_Level2.Items.Add(info);
                 }
+
             }
             catch (Exception ex)
             {
@@ -175,8 +173,8 @@ namespace TuShareLoader
                 if (bF.BanKuaiName == "") return;
                 this.listBox_SelfBanKuai.Items.Add(bF.BanKuaiName);
 
-                List<string> tempList = new List<string>();
-                m_bankuaiAndSelGegu.Add(bF.BanKuaiName, tempList);
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+                DatDataManager.Instance.BankuaiGeguPathDic.Add(bF.BanKuaiName, dic);
 
             }
 
@@ -184,13 +182,47 @@ namespace TuShareLoader
             {
                 //选中显示个股
                 this.listBox_ChengfenData.Items.Clear();
-                foreach (KeyValuePair<string, List<string>> kv in m_bankuaiAndSelGegu)
+                foreach (KeyValuePair<string, Dictionary<string,string>> kv in DatDataManager.Instance.BankuaiGeguPathDic)
                 {
-                    if (kv.Key != this.listBox_SelfBanKuai.SelectedItem.ToString()) continue;
-                    List<string> geguList = kv.Value;
-                    foreach(string gegu in geguList)
+                    if (this.listBox_SelfBanKuai.SelectedItem != null && kv.Key != this.listBox_SelfBanKuai.SelectedItem.ToString()) continue;
+                    Dictionary<string, string> geguList = kv.Value;
+                    foreach (KeyValuePair<string,string> gegu in geguList)
                     {
-                        this.listBox_ChengfenData.Items.Add(gegu);
+                        this.listBox_ChengfenData.Items.Add(gegu.Key + " " + gegu.Value);
+                    }
+                }
+            }
+        }
+
+        private void Level2_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                //选中显示个股
+                this.richTextBox_Data.Clear();
+
+                if (this.listBox_Level1.SelectedItem == null ||
+                    this.listBox_Level1.SelectedItem.ToString() == "" ||
+                    this.listBox_Level2.SelectedItem == null ||
+                    this.listBox_Level2.SelectedItem.ToString() == "") return;
+
+                Level2Info infos = this.listBox_Level2.SelectedItem as Level2Info;
+
+                string fileInfos = this.textBox_path.Text.Replace("\r\n", "") + this.listBox_Level1.SelectedItem.ToString()
+                                + "\\" + "day\\" + infos.DataCodeStr + ".dat";
+
+                //获取数据
+                if(!File.Exists(fileInfos))
+                {
+                    MessageBox.Show("该行情文件不存在,请刷新文华相关合约的日线数据！");
+                }
+                else
+                {
+                    List<MarketData> wDList = WenHuaDataHandle.GetHQDatData(fileInfos);
+                    //因为数据可能很多，所以只展示100条
+                    for(int i = wDList.Count - 1;i >= wDList.Count - 50;i--)
+                    {
+                        this.richTextBox_Data.AppendText(wDList[i].DateTimeNum + "|" + wDList[i].Close + "\n");
                     }
                 }
             }

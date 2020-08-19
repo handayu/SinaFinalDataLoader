@@ -14,7 +14,7 @@ namespace TuShareLoader
         /// </summary>
         /// <param name="filePathName"></param>
         /// <returns></returns>
-        public static List<string> GetConDatData(string filePathName)
+        public static List<Level2Info> GetConDatData(string filePathName)
         {
             try
             {
@@ -22,19 +22,27 @@ namespace TuShareLoader
                 byte[] bs = FileToByte(filePathName);
                 byte[] tt = bs.Skip(8).Take(bs.Length).ToArray();
 
-                List<string> listName = new List<string>();
+                List<Level2Info> listInfo = new List<Level2Info>();
 
                 for (int i = 0; i < tt.Length; i = i + 141)
                 {
-                    //byte[] conCode = tt.Skip(i + 4).Take(4).ToArray();
-                    //float conCodeFloat = BytesToFloat(conCode);
+                    byte[] conCode = tt.Skip(i + 4).Take(4).ToArray();
+                    float conCodeFloat = BytesToFloat(conCode);
+
+                    byte[] conCodeInfo = tt.Skip(i + 8).Take(2).ToArray();
+                    UInt16 conCodeInfoStr = BytesToInt16(conCodeInfo);//这里相当重要
 
                     byte[] conIns = tt.Skip(i + 53).Take(28).ToArray();
                     string conInsStr = BytesToString(conIns);
 
-                    listName.Add(conInsStr);
+                    Level2Info info = new Level2Info();
+                    info.WenHuaCode = conCodeFloat;
+                    info.DatCode = conCodeInfoStr;
+                    info.Instrument = conInsStr;
+
+                    listInfo.Add(info);
                 }
-                return listName;
+                return listInfo;
             }
             catch (Exception ex)
             {
@@ -53,14 +61,15 @@ namespace TuShareLoader
             //byte[] bs = FileToByte(@"D:\wh6上海中期\Data\贵金属\day\00060881.dat");
             byte[] bs = FileToByte(filePathName);
             List<MarketData> mList = new List<MarketData>();
+            if (bs == null) return mList;
             //下面测试了是每四个字节一转换，第一个字段按照Int32转换为时间，其余字段，按照float进行转换；
             for (int i = 0; i < bs.Length; i = i + 37)
             {
                 byte[] longtimeBS = { bs[i], bs[i + 1], bs[i + 2], bs[i + 3] };
                 byte[] floatOpen = { bs[i + 4], bs[i + 5], bs[i + 6], bs[i + 7] };
-                byte[] floatHigh = { bs[i + 8], bs[i + 9], bs[i + 10], bs[i + 11] };
-                byte[] floatLow = { bs[i + 12], bs[i + 13], bs[i + 14], bs[i + 15] };
-                byte[] floatClose = { bs[i + 16], bs[i + 17], bs[i + 18], bs[i + 19] };
+                byte[] floatClose = { bs[i + 8], bs[i + 9], bs[i + 10], bs[i + 11] };
+                byte[] floatHigh = { bs[i + 12], bs[i + 13], bs[i + 14], bs[i + 15] };
+                byte[] floatLow = { bs[i + 16], bs[i + 17], bs[i + 18], bs[i + 19] };
                 byte[] floatVolume = { bs[i + 20], bs[i + 21], bs[i + 22], bs[i + 23] };
                 byte[] floatIntest = { bs[i + 24], bs[i + 25], bs[i + 26], bs[i + 27] };
                 byte[] floatSeltle = { bs[i + 28], bs[i + 29], bs[i + 30], bs[i + 31] };
@@ -77,6 +86,16 @@ namespace TuShareLoader
                 float UnknowFloat = BytesToFloat(floatUnknow);
 
                 MarketData mD = new MarketData();
+                mD.HQTime = timeLong;
+                mD.Open = openFloat;
+                mD.High = HighFloat;
+                mD.Low = LowFloat;
+                mD.Close = CloseFloat;
+                mD.Volumn = Volumnloat;
+                mD.Intest = IntestFloat;
+                mD.SettlePrice = SettleFloat;
+                mD.Unknow = UnknowFloat;
+
                 mList.Add(mD);
             }
             return mList;
@@ -124,6 +143,11 @@ namespace TuShareLoader
         {
             string str = Encoding.GetEncoding("GB2312").GetString(bs);
             return str;
+        }
+
+        public static UInt16 BytesToInt16(byte[] bs)
+        {
+            return BitConverter.ToUInt16(bs, 0);
         }
 
     }

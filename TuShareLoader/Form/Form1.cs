@@ -36,6 +36,96 @@ namespace TuShareLoader
 
         }
 
+        /// <summary>
+        /// WenHuaban自定义版块名称进来，按照单例搜索，加载数据
+        /// </summary>
+        /// <param name="bankuaiDta"></param>
+        public Form1(string banKuaiName)
+        {
+            InitializeComponent();
+            GraphPane mPane = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+            mPane.XAxis.Title.Text = "DaySeries";//X轴标题
+            mPane.YAxis.Title.Text = "PercentUP%";//Y轴标题
+            mPane.Title.Text = "----";//标题
+                                      //mPane.XAxis.Scale.MaxAuto = true;
+            mPane.XAxis.Type = ZedGraph.AxisType.LinearAsOrdinal;//出现图表右侧出现空白的情况....
+            mPane.XAxis.CrossAuto = true;//容许x轴的自动放大或缩小
+            mPane.YAxis.MajorGrid.IsVisible = true;//设置虚线.
+            zedGraphControl1.IsShowHScrollBar = true;//不显示水平滚动条
+            zedGraphControl1.PanModifierKeys = Keys.None;//鼠标拖拽可移动
+            mPane.Legend.IsVisible = false;//不显示Lenged，因为当股票很多的时候，下面的图表会被压缩到一点点没有。
+
+            //完整的内存配置数据
+            Dictionary<string,Dictionary<string,string>> datInfoDic = DatDataManager.Instance.BankuaiGeguPathDic;
+            foreach(KeyValuePair<string,Dictionary<string,string>> kv in datInfoDic)
+            {
+                if (banKuaiName != kv.Key) continue;
+
+                //加载窗口
+                this.Text = banKuaiName;
+                //图表标题
+                mPane.Title.Text = banKuaiName;//标题
+                //加载数据
+                LoadDatData(kv.Value);
+            }
+        }
+
+
+        private Dictionary<string, List<MarketData>> m_wenhuaShuJuDic = new Dictionary<string, List<MarketData>>();
+        /// <summary>
+        /// 从dat中解析出行情数据 - MA数据加载 个股 - 数据
+        /// </summary>
+        /// <param name="valueInfosDic"></param>
+        private void LoadDatData(Dictionary<string, string> valueInfosDic)
+        {
+            foreach(KeyValuePair<string,string> kv in valueInfosDic)
+            {
+                string geguStr = kv.Key;
+                string geguPath = kv.Value;
+
+                //获取该key下的path数据
+                List < MarketData > marketData= WenHuaDataHandle.GetHQDatData(geguPath);
+                m_wenhuaShuJuDic.Add(geguStr, marketData);
+            }
+
+            //上图表
+            GraphPane mPane = zedGraphControl1.GraphPane;//获取索引到GraphPane面板上
+            foreach (KeyValuePair<string, List<MarketData>> kp in m_wenhuaShuJuDic)
+            {
+                List<MarketData> marketDataList = kp.Value;
+
+                if (kp.Value == null || kp.Value.Count <= 0) continue;
+
+                MarketData.CalMaDiff(marketDataList);
+
+                PointPairList dataList = new PointPairList();
+
+                for (int j = 0; j < marketDataList.Count; j++)
+                {
+                    PointPair pairData = new PointPair();
+
+                    double x = 0.00;
+                    DateTime tM = marketDataList[j].DateTimeNum;
+                    string daT = tM.ToString("yyyy-MM-dd").Replace("-","");
+
+                    double.TryParse(daT, out x);//时间double 20200617
+
+                    double y = marketDataList[j].MADiff;
+
+                    if (y == 0) continue;
+
+                    pairData.X = x;
+                    pairData.Y = y;
+
+                    dataList.Add(pairData);
+                }
+
+                LineItem mCure = mPane.AddCurve(kp.Key, dataList, Common.GetRandomColor(), SymbolType.None);
+                m_LineItemList.Add(mCure);
+                zedGraphControl1.AxisChange();//画到zedGraphControl1控件中，此句必加        
+            }
+        }
+
         public Form1(BanKuaiDta bankuaiDta)
         {
             InitializeComponent();
@@ -97,9 +187,6 @@ namespace TuShareLoader
 
                     LineItem mCure = mPane.AddCurve(kp.Key, dataList, Common.GetRandomColor(), SymbolType.None);
                     m_LineItemList.Add(mCure);
-                    //LineItem line = (LineItem)mCure;
-                    //line.Line.Width = 200;
-                    //line.Line.IsSmooth = true;
                     zedGraphControl1.AxisChange();//画到zedGraphControl1控件中，此句必加        
 
                 }

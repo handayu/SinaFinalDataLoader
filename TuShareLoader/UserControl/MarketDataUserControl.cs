@@ -27,6 +27,13 @@ namespace TuShareLoader
         public event BanKuaiHandle BanKuaiEvent;
 
         /// <summary>
+        /// Wenhua自定义板块点击事件
+        /// </summary>
+        /// <param name="data"></param>
+        public delegate void WenHuaBanKuaiHandle(string bankuaiName);
+        public event WenHuaBanKuaiHandle WenHuaBanKuaiEvent;
+
+        /// <summary>
         /// 板块强度列表
         /// </summary>
         private BindingList<BanKuaiQiangdu> m_banKuaiQiangDuList = new BindingList<BanKuaiQiangdu>();
@@ -60,6 +67,19 @@ namespace TuShareLoader
 
             DataGridView gridView = this.dataGridView_BankuaiList;
             gridView.Columns[1].SortMode = DataGridViewColumnSortMode.Automatic;
+
+        }
+
+        public void LoadConfig()
+        {
+            //3.同时也获取文华的配置板块
+            var datInfoDic = DatDataManager.Instance.BankuaiGeguPathDic;
+
+            foreach (KeyValuePair<string, Dictionary<string, string>> kv in datInfoDic)
+            {
+                string bankuaiName = kv.Key;
+                this.listBox_WenHuaBaKuai.Items.Add(bankuaiName);
+            }
         }
 
         public void SubScribe()
@@ -201,7 +221,7 @@ namespace TuShareLoader
                 };
 
                 //====================================//
-                    m_banKuaiQiangDuList.Add(qiangDu);               
+                m_banKuaiQiangDuList.Add(qiangDu);
                 //====================================//
 
                 zedGraphControl2.AxisChange();//画到zedGraphControl1控件中，此句必加  
@@ -267,27 +287,67 @@ namespace TuShareLoader
             }
         }
 
-        /// <summary>
-        /// 板块管理
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void WenHua_Click(object sender, EventArgs e)
+        private void WenHua_MouseUp(object sender, MouseEventArgs e)
         {
-            MouseEventArgs args = (MouseEventArgs)e;
-
-            //左右键切换
-            if (MouseButtons.Right == args.Button)
+            if (e.Button == MouseButtons.Right)
             {
                 //右键弹出文华板块管理终端
                 FormWenHuaManger FManager = new FormWenHuaManger();
-                FManager.Show();
+                FManager.ShowDialog();
+
+                //完整的内存配置数据
+                var datInfoDic = DatDataManager.Instance.BankuaiGeguPathDic;
+
+                foreach (KeyValuePair<string, Dictionary<string, string>> kv in datInfoDic)
+                {
+                    string bankuaiName = kv.Key;
+                    if (this.listBox_WenHuaBaKuai.Items.Contains(bankuaiName)) continue;//已经有的不再添加
+                    this.listBox_WenHuaBaKuai.Items.Add(bankuaiName);
+                }
             }
-            else
+
+            if (e.Button == MouseButtons.Left)
             {
-                //左键点击显示并打开KForm显示
+                //打开图表K线展示
+                if (WenHuaBanKuaiEvent != null && this.listBox_WenHuaBaKuai.SelectedItem != null)
+                {
+                    WenHuaBanKuaiEvent(this.listBox_WenHuaBaKuai.SelectedItem.ToString());
+                }
+            }
+        }
 
+        private ToolTip tp = new ToolTip();
 
+        private void WenHua_ListBankuai_MouseMove(object sender, MouseEventArgs e)
+        {
+            int index = this.listBox_WenHuaBaKuai.IndexFromPoint(e.Location);
+
+            // 判断鼠标所在位置是否是有效元素
+            if (index != -1 && index < this.listBox_WenHuaBaKuai.Items.Count)
+            { 
+                // NodeInfo是自定义对象，ToString函数返回文件名，Location属性显示全部路径                       
+                string nInfo = this.listBox_WenHuaBaKuai.Items[index].ToString();
+                string visualInfos = string.Empty;
+
+                Dictionary<string, Dictionary<string, string>> cngInfoDic =DatDataManager.Instance.BankuaiGeguPathDic;
+                if (cngInfoDic == null || cngInfoDic.Keys.Count <= 0 || cngInfoDic.Values.Count <= 0) return;
+
+                foreach (KeyValuePair<string,Dictionary<string,string>> kv in cngInfoDic)
+                {
+                    if (kv.Key != nInfo) continue;
+                    foreach(KeyValuePair<string,string> knn in kv.Value)
+                    {
+                        visualInfos = visualInfos + knn.Key + "\n";
+                    }
+                }
+
+                visualInfos = "板块成分:" + "\n" + visualInfos;
+
+                if (tp.GetToolTip(this.listBox_WenHuaBaKuai) != visualInfos)
+                {
+                    //如果已经显示则不再显示，可防止闪烁                            
+                    tp.SetToolTip(this.listBox_WenHuaBaKuai, visualInfos);
+                }
             }
         }
     }

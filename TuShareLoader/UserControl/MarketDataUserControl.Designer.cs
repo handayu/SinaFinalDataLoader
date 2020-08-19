@@ -29,32 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabpage2 = new System.Windows.Forms.TabPage();
+            this.listBox_WenHuaBaKuai = new System.Windows.Forms.ListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView_BankuaiList = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
-            this.tabpage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabpage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_BankuaiList)).BeginInit();
-            this.tabpage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage1
@@ -87,8 +84,8 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(287, 320);
@@ -113,6 +110,29 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(301, 352);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabpage2
+            // 
+            this.tabpage2.Controls.Add(this.listBox_WenHuaBaKuai);
+            this.tabpage2.Location = new System.Drawing.Point(4, 22);
+            this.tabpage2.Name = "tabpage2";
+            this.tabpage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabpage2.Size = new System.Drawing.Size(293, 326);
+            this.tabpage2.TabIndex = 1;
+            this.tabpage2.Text = "文华财经自定义版块";
+            this.tabpage2.UseVisualStyleBackColor = true;
+            // 
+            // listBox_WenHuaBaKuai
+            // 
+            this.listBox_WenHuaBaKuai.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox_WenHuaBaKuai.FormattingEnabled = true;
+            this.listBox_WenHuaBaKuai.ItemHeight = 12;
+            this.listBox_WenHuaBaKuai.Location = new System.Drawing.Point(3, 3);
+            this.listBox_WenHuaBaKuai.Name = "listBox_WenHuaBaKuai";
+            this.listBox_WenHuaBaKuai.Size = new System.Drawing.Size(287, 320);
+            this.listBox_WenHuaBaKuai.TabIndex = 0;
+            this.listBox_WenHuaBaKuai.MouseMove += new System.Windows.Forms.MouseEventHandler(this.WenHua_ListBankuai_MouseMove);
+            this.listBox_WenHuaBaKuai.MouseUp += new System.Windows.Forms.MouseEventHandler(this.WenHua_MouseUp);
             // 
             // splitContainer1
             // 
@@ -188,51 +208,6 @@
             this.zedGraphControl2.ContextMenuBuilder += new ZedGraph.ZedGraphControl.ContextMenuBuilderEventHandler(this.ContextMenu_Click);
             this.zedGraphControl2.PointValueEvent += new ZedGraph.ZedGraphControl.PointValueHandler(this.Control_PointValueEvent);
             // 
-            // tabpage2
-            // 
-            this.tabpage2.Controls.Add(this.dataGridView2);
-            this.tabpage2.Location = new System.Drawing.Point(4, 22);
-            this.tabpage2.Name = "tabpage2";
-            this.tabpage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabpage2.Size = new System.Drawing.Size(293, 326);
-            this.tabpage2.TabIndex = 1;
-            this.tabpage2.Text = "文华财经自定义版块";
-            this.tabpage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1});
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.GridColor = System.Drawing.Color.White;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView2.RowHeadersVisible = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(287, 320);
-            this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.Click += new System.EventHandler(this.WenHua_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "BanKuaiName";
-            this.dataGridViewTextBoxColumn1.HeaderText = "板块类别";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // MarketDataUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -245,14 +220,13 @@
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabpage2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_BankuaiList)).EndInit();
-            this.tabpage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,8 +243,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.TabPage tabpage2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.ListBox listBox_WenHuaBaKuai;
     }
 }
 
